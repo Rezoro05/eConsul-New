@@ -46,11 +46,18 @@ Each entry: date · decision · rationale. Open questions live at the bottom unt
 - D21. Brand guide defines reversed logos: on dark green (light-green symbol, light wordmark) and on mid-green (all white); plus a background pattern and symbol rationale (e-service + approval check + airplane tail). Exact reversed colors to come with REZ's logo files.
 - D22. Repository: github.com/Rezoro05/eConsul-New. Brand guide PDF (543 MB) kept out of git — exceeds GitHub's 100 MB file limit.
 - D23. GitHub repo is the source of truth; Claude works in the repo, pushes every change, and mirrors files to REZ's local eConsul folder.
+- D24. Visa data (resolves Q6): base = Visa Requirements Dataset (maxix7, CC BY 4.0, 197×197 tourist short-stay) + eConsul consultant correction layer citing government sources. UI shows "checked <date> · source" for verified pairs; unverified pairs say "unverified — confirm with a consultant". Pre-launch: legal check or permission from Passport Index (upstream of base data).
+
+## Step 1 summary — Phase 1 scope CLOSED (2026-10-22)
+Public site replacing econsul.io, Georgian + English (Russian later), brand per guidelines.
+Pages: Home, Countries list, Country page (data-driven), Blog list/post, About, Contact/visa request, Privacy, Terms (+ Pricing maybe).
+Features: readiness-check widget (passport + destination → visa status, with verification provenance); visa-request CTA → existing external form at launch.
+Content: migrate all existing country pages and blog posts.
+Out of Phase 1: login, traveller profile, consultant platform, payments, calendar, own visa-request form.
 
 ## Open questions
 - Q1. Testing clarification (pure core = I/O tests; mocks only at edges) — confirmation pending.
 - Q2. Any customer records outside the site (form tool, CRM)? (Content migration resolved by D10.)
-- Q3. Consultant-side scope in prototype (see step-1 discussion).
-- Q5. Hosting (where the site runs) — decided in step 2. Not GitHub Pages if server features are needed.
+- Q3. Consultant-side scope (Phase 2).
+- Q5. [step 2] Hosting (where the site runs) — decided in step 2. Not GitHub Pages if server features are needed.
 - Q13. Logo deliverables needed: SVG (or AI), transparent background — full-color, reversed on dark green, all-white, symbol-only; pattern SVG.
-- Q6. Visa-rules data source — now needed for Phase 1 (D17): licensed provider vs. open dataset vs. hand-built.
