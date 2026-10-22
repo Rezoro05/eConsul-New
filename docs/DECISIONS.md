@@ -69,6 +69,7 @@ Out of Phase 1: login, traveller profile, consultant platform, payments, calenda
 - D35. Launch in Georgian + English + Russian using the existing translations (resolves Q17; supersedes D15 language set; D33 translation drafting no longer needed for migrated content).
 - D36. No Sanity access — migrate by downloading each page's Next.js data JSON (migration/fetch-old-site.sh, run from REZ's Terminal; Claude's networks can't reach econsul.io and the built-in browser can't save files). (Resolves Q15.)
 - D37. Content stays as files in the repo for now; revisit a CMS (possibly Sanity) later (confirms D25; resolves Q16).
+- D38. Images live in the repo and are served with the site; converted/resized to modern formats at build time. Revisit if repo size becomes a problem.
 
 ## Findings — current econsul.io (2026-10-22, via built-in browser)
 - F1. Built with Next.js; content almost certainly in Sanity CMS (Sanity document/image-ref/portable-text conventions; per-language documents linked via _translations).
@@ -82,5 +83,5 @@ Out of Phase 1: login, traveller profile, consultant platform, payments, calenda
 - Q2. Any customer records outside the site (form tool, CRM)? (Content migration resolved by D10.)
 - Q3. Consultant-side scope (Phase 2).
 - Q5. Hosting: Cloudflare Pages vs. Netlify (D31).
-- Q18. Images: 280 unique images on Sanity CDN (project 6u9g44zq, dataset production); downloaded via migration/fetch-old-images.sh. Where image files live long-term (repo vs. image host) — decide in step 4.
+- Q18. Images: 280 unique images on Sanity CDN (project 6u9g44zq, dataset production); downloaded via migration/fetch-old-images.sh.
 - Q13. Logo deliverables needed: SVG (or AI), transparent background — full-color, reversed on dark green, all-white, symbol-only; pattern SVG.
