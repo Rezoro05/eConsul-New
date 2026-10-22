@@ -45,6 +45,7 @@ Each entry: date · decision · rationale. Open questions live at the bottom unt
 - D20. Final logo files supplied by REZ. Extracted SVGs (D18) are placeholders until then.
 - D21. Brand guide defines reversed logos: on dark green (light-green symbol, light wordmark) and on mid-green (all white); plus a background pattern and symbol rationale (e-service + approval check + airplane tail). Exact reversed colors to come with REZ's logo files.
 - D22. Repository: github.com/Rezoro05/eConsul-New. Brand guide PDF (543 MB) kept out of git — exceeds GitHub's 100 MB file limit.
+- D23. GitHub repo is the source of truth; Claude works in the repo, pushes every change, and mirrors files to REZ's local eConsul folder.
 
 ## Open questions
 - Q1. Testing clarification (pure core = I/O tests; mocks only at edges) — confirmation pending.
