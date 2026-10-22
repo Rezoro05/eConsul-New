@@ -66,6 +66,9 @@ Out of Phase 1: login, traveller profile, consultant platform, payments, calenda
 - D33. English content (resolves Q14): Claude drafts English translations of all migrated content; a consultant reviews before launch. Launch gated on review.
 - D34. Step 3 component list approved (see ARCHITECTURE.md / step-3 discussion).
 - D32. Testing (resolves Q1): pure core gets input/output tests; delegate injection/mocks only at I/O edges and orchestrators.
+- D35. Launch in Georgian + English + Russian using the existing translations (resolves Q17; supersedes D15 language set; D33 translation drafting no longer needed for migrated content).
+- D36. No Sanity access — migrate by downloading each page's Next.js data JSON (migration/fetch-old-site.sh, run from REZ's Terminal; Claude's networks can't reach econsul.io and the built-in browser can't save files). (Resolves Q15.)
+- D37. Content stays as files in the repo for now; revisit a CMS (possibly Sanity) later (confirms D25; resolves Q16).
 
 ## Findings — current econsul.io (2026-10-22, via built-in browser)
 - F1. Built with Next.js; content almost certainly in Sanity CMS (Sanity document/image-ref/portable-text conventions; per-language documents linked via _translations).
@@ -78,7 +81,5 @@ Out of Phase 1: login, traveller profile, consultant platform, payments, calenda
 - Q2. Any customer records outside the site (form tool, CRM)? (Content migration resolved by D10.)
 - Q3. Consultant-side scope (Phase 2).
 - Q5. Hosting: Cloudflare Pages vs. Netlify (D31).
-- Q15. Migration source: Sanity export (needs project access) vs. harvesting page JSON via browser.
-- Q16. Keep Sanity as the content source for the new site vs. move content into repo files (D25).
-- Q17. With EN+RU content already existing: launch ka+en+ru? Does D33 (translate everything) still apply, and are existing translations trusted or reviewed?
+- Q18. Images: page data references Sanity image IDs; image files must be downloaded separately (needs Sanity project ID).
 - Q13. Logo deliverables needed: SVG (or AI), transparent background — full-color, reversed on dark green, all-white, symbol-only; pattern SVG.
