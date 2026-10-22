@@ -6,3 +6,4 @@ migration/raw-pages.tgz
 migration/raw/images/
 migration/web-images.tar
 migration/compare.png
+node_modules/

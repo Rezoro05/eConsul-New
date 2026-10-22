@@ -78,6 +78,11 @@ Out of Phase 1: login, traveller profile, consultant platform, payments, calenda
 - D42. A correction identical to the base row still marks the pair verified.
 - D43. Images: repo stores web-ready copies only (WebP, max 1920px; existing small WebP/AVIF copied as-is); 298 MB originals stay local and git-ignored (refines D38).
 - D44. Visa pipeline signatures as in ARCHITECTURE.md § Interfaces.
+- D45. Base rows with both a check date and a source are verified (and go stale like corrections); source-only base rows are unverified. A base row with a date but no source is an error.
+- D46. Staleness window = 183 days fixed (supersedes "6 months" in D40). 183 days old = fresh, 184 = stale.
+- D47. A max stay on a visa_required / no_admission row is a build error.
+- D48. Step 5 splits (rule 6): CSV tokenizing via csv-parse behind readCsv; small field parsers; isStale separate from merge; validator = checkRow + findDuplicatePairs (validateVisaData is pure composition → functional test).
+- D49. Interface adjustments found while writing tests: parsed rows carry `origin {file,line}` for error reporting; BaseRow gets `verification | null`; added parseCountriesCsv for the known-country list; mergeRules takes `today` (needed for staleness); buildVisaData takes `baseSnapshot`.
 
 ## Findings — current econsul.io (2026-10-22, via built-in browser)
 - F1. Built with Next.js; content almost certainly in Sanity CMS (Sanity document/image-ref/portable-text conventions; per-language documents linked via _translations).
