@@ -38,3 +38,31 @@ Readiness check (browser): loader (I/O) · lookup · result formatter · widget.
 Languages: link builder · translator · country names (Intl.DisplayNames, ka coverage to verify) · language switcher.
 Content & pages: content schemas · page templates (Home, Countries, Country, Blog list, Blog post, About, Contact, Privacy, Terms) · shared layout.
 Migration (one-off): old-site importer · redirect builder.
+
+## Interfaces — visa data (step 4, D44)
+
+```ts
+type CountryCode = string & { __brand: 'ISO2' }
+type IsoDate = string & { __brand: 'IsoDate' }          // YYYY-MM-DD
+type Requirement = 'visa_free' | 'eta' | 'evisa' | 'visa_on_arrival' | 'visa_required' | 'no_admission'
+
+type BaseRow    = { passport: CountryCode; destination: CountryCode; requirement: Requirement; maxStayDays: number | null }
+type Correction = BaseRow & { verifiedOn: IsoDate; sourceUrl: string; verifiedBy: string; note?: string }
+
+type Provenance =
+  | { kind: 'unverified'; baseSnapshot: IsoDate }
+  | { kind: 'verified'; verifiedOn: IsoDate; sourceUrl: string; stale: boolean }   // stale: D40
+
+type VisaRule  = { passport: CountryCode; destination: CountryCode; requirement: Requirement; maxStayDays: number | null; provenance: Provenance }
+type RowError  = { file: string; line: number; field?: string; message: string }
+type Result<T> = { ok: true; value: T } | { ok: false; errors: RowError[] }
+
+parseBaseCsv(text: string): Result<BaseRow[]>                                   // pure — format only
+parseCorrectionsCsv(text: string): Result<Correction[]>                         // pure — format only
+validateVisaData(base, corrections, knownCountries, today): RowError[]          // pure — meaning
+mergeRules(base, corrections, baseSnapshot, today): VisaRule[]                  // pure — correction wins
+groupByPassport(rules): PassportFile[]                                          // pure
+writePassportFiles(files, outDir, writeFile): Promise<void>                     // edge
+buildVisaData({ readFile, writeFile, today, paths }): Promise<Result<Summary>>  // wiring — functional test
+```
+`verifiedBy` is dropped before PassportFile (D41).

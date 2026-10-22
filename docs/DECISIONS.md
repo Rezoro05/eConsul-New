@@ -71,6 +71,14 @@ Out of Phase 1: login, traveller profile, consultant platform, payments, calenda
 - D37. Content stays as files in the repo for now; revisit a CMS (possibly Sanity) later (confirms D25; resolves Q16).
 - D38. Images live in the repo and are served with the site; converted/resized to modern formats at build time. Revisit if repo size becomes a problem.
 
+## Step 4 — Visa data interfaces (2026-10-22)
+- D39. Corrections may add pairs absent from the base dataset.
+- D40. Verified corrections go stale after 6 months: shown as "checked <date> — may be outdated" (still verified provenance, plus a stale flag computed at build time from `today`).
+- D41. `verifiedBy` stays internal (repo audit trail); never shipped to the browser.
+- D42. A correction identical to the base row still marks the pair verified.
+- D43. Images: repo stores web-ready copies only (WebP, max 1920px; existing small WebP/AVIF copied as-is); 298 MB originals stay local and git-ignored (refines D38).
+- D44. Visa pipeline signatures as in ARCHITECTURE.md § Interfaces.
+
 ## Findings — current econsul.io (2026-10-22, via built-in browser)
 - F1. Built with Next.js; content almost certainly in Sanity CMS (Sanity document/image-ref/portable-text conventions; per-language documents linked via _translations).
 - F2. Sitemap: 298 URLs. Georgian at root, English under /en/, Russian under /ru/ — same URL scheme as D29.
