@@ -83,6 +83,7 @@ Out of Phase 1: login, traveller profile, consultant platform, payments, calenda
 - D47. A max stay on a visa_required / no_admission row is a build error.
 - D48. Step 5 splits (rule 6): CSV tokenizing via csv-parse behind readCsv; small field parsers; isStale separate from merge; validator = checkRow + findDuplicatePairs (validateVisaData is pure composition → functional test).
 - D49. Interface adjustments found while writing tests: parsed rows carry `origin {file,line}` for error reporting; BaseRow gets `verification | null`; added parseCountriesCsv for the known-country list; mergeRules takes `today` (needed for staleness); buildVisaData takes `baseSnapshot`.
+- D50. Step 7 done for the visa pipeline: 98 tests pass, type check clean; six deliberate bugs each caught by the suite.
 
 ## Findings — current econsul.io (2026-10-22, via built-in browser)
 - F1. Built with Next.js; content almost certainly in Sanity CMS (Sanity document/image-ref/portable-text conventions; per-language documents linked via _translations).
@@ -91,6 +92,7 @@ Out of Phase 1: login, traveller profile, consultant platform, payments, calenda
 - F4. English and Russian versions of content already exist (e.g. /en/destination/kanadis-visa is English). Affects D11/D15/D33.
 - F5. Each page exposes localeAlternates (ka/en/ru paths) — usable for the redirect map and translation linking.
 - F6. Raw page data for all 298 URLs saved in migration/raw/pages (Next.js pageProps JSON, all valid). 280 unique Sanity image references.
+- F7. Real-data run (base dataset 2026-08-11 release, no corrections): with http sources allowed → 197 passport files, 38,612 rules, 38 verified, 0 stale; 4.7 MB total, largest file 24 KB.
 
 ## Open questions
 - Q2. Any customer records outside the site (form tool, CRM)? (Content migration resolved by D10.)
@@ -98,3 +100,4 @@ Out of Phase 1: login, traveller profile, consultant platform, payments, calenda
 - Q5. Hosting: Cloudflare Pages vs. Netlify (D31).
 - Q18. Images: 280 unique images on Sanity CDN (project 6u9g44zq, dataset production); downloaded via migration/fetch-old-images.sh.
 - Q13. Logo deliverables needed: SVG (or AI), transparent background — full-color, reversed on dark green, all-white, symbol-only; pattern SVG.
+- Q19. One base row (line 7205) cites an http:// source; https-only rule currently fails the whole build. Allow http for base-dataset sources (corrections stay https-only)?
