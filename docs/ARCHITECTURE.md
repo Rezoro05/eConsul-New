@@ -31,3 +31,10 @@ Parse/validate/merge/group are pure functions. Invalid data fails the build.
 
 ## Phase 2 compatibility
 Astro server-rendered routes (via host adapter) for login, profile, consultant screens. Personal data hosted in the EU. Fit to be re-evaluated before Phase 2 starts.
+
+## Components (step 3, D34)
+Visa data (build): base reader · corrections reader · validator · merger · grouper · file writer (I/O) · pipeline runner (functional test).
+Readiness check (browser): loader (I/O) · lookup · result formatter · widget.
+Languages: link builder · translator · country names (Intl.DisplayNames, ka coverage to verify) · language switcher.
+Content & pages: content schemas · page templates (Home, Countries, Country, Blog list, Blog post, About, Contact, Privacy, Terms) · shared layout.
+Migration (one-off): old-site importer · redirect builder.

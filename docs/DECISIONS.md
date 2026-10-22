@@ -63,12 +63,13 @@ Out of Phase 1: login, traveller profile, consultant platform, payments, calenda
 - D29. URLs: Georgian at root, English at /en/, Russian later at /ru/. Page text one file per page per language; UI strings one dictionary per language. Old econsul.io URLs 301-redirect to new ones.
 - D30. Stack: Astro + TypeScript, Vitest for tests. Next.js considered; revisit fit for Phase 2 app when we get there.
 - D31. Hosting: Cloudflare Pages or Netlify (auto-deploy from GitHub) — final pick pending; Phase 2 needs EU data residency.
+- D33. English content (resolves Q14): Claude drafts English translations of all migrated content; a consultant reviews before launch. Launch gated on review.
+- D34. Step 3 component list approved (see ARCHITECTURE.md / step-3 discussion).
 - D32. Testing (resolves Q1): pure core gets input/output tests; delegate injection/mocks only at I/O edges and orchestrators.
 
 ## Open questions
 - Q2. Any customer records outside the site (form tool, CRM)? (Content migration resolved by D10.)
 - Q3. Consultant-side scope (Phase 2).
 - Q5. Hosting: Cloudflare Pages vs. Netlify (D31).
-- Q14. English versions of migrated Georgian content needed for D15 launch — who translates, and is partial English coverage acceptable?
-- Q15. Getting verbatim content out of current econsul.io (export vs. scrape).
+- Q15. Scrape econsul.io: blocked from both REZ's computer shell and container by network allowlist (403). Options: allowlist econsul.io, or read via built-in browser.
 - Q13. Logo deliverables needed: SVG (or AI), transparent background — full-color, reversed on dark green, all-white, symbol-only; pattern SVG.
