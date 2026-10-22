@@ -93,6 +93,7 @@ Out of Phase 1: login, traveller profile, consultant platform, payments, calenda
 - F5. Each page exposes localeAlternates (ka/en/ru paths) — usable for the redirect map and translation linking.
 - F6. Raw page data for all 298 URLs saved in migration/raw/pages (Next.js pageProps JSON, all valid). 280 unique Sanity image references.
 - F7. Real-data run (base dataset 2026-08-11 release, no corrections): with http sources allowed → 197 passport files, 38,612 rules, 38 verified, 0 stale; 4.7 MB total, largest file 24 KB.
+- F8. Accuracy pilot (GE passport, base dataset vs Wikipedia): 22/193 requirement disagreements, 11 in the dangerous direction; neither source reliable alone (Namibia vs Seychelles); dataset contradicts eConsul's own South Korea page. Details: docs/VISA-ACCURACY.md §0, research/pilot-ge/.
 
 ## Open questions
 - Q2. Any customer records outside the site (form tool, CRM)? (Content migration resolved by D10.)
@@ -101,3 +102,4 @@ Out of Phase 1: login, traveller profile, consultant platform, payments, calenda
 - Q18. Images: 280 unique images on Sanity CDN (project 6u9g44zq, dataset production); downloaded via migration/fetch-old-images.sh.
 - Q13. Logo deliverables needed: SVG (or AI), transparent background — full-color, reversed on dark green, all-white, symbol-only; pattern SVG.
 - Q19. One base row (line 7205) cites an http:// source; https-only rule currently fails the whole build. Allow http for base-dataset sources (corrections stay https-only)?
+- Q20. Approve docs/VISA-ACCURACY.md: claim (§1), model changes (§2), audit acceptance criteria (§4), display rules (§6); answer inputs in §9 (case history, consultant time, launch passports, legal reviewer).
