@@ -88,6 +88,7 @@ Out of Phase 1: login, traveller profile, consultant platform, payments, calenda
 - D52. Case history lives in HubSpot; aggregated counts only (no personal data) via the HubSpot connector once connected.
 - D53. Launch passports to audit: Georgian, Russian, Armenian, Azerbaijani, Ukrainian.
 - D54. Legal review by a human lawyer (person TBD).
+- D55. No HubSpot connector. Case-history counts come from a manual HubSpot export containing only aggregate columns (no names, emails, phones, documents).
 
 ## Findings — current econsul.io (2026-10-22, via built-in browser)
 - F1. Built with Next.js; content almost certainly in Sanity CMS (Sanity document/image-ref/portable-text conventions; per-language documents linked via _translations).
@@ -107,4 +108,4 @@ Out of Phase 1: login, traveller profile, consultant platform, payments, calenda
 - Q13. Logo deliverables needed: SVG (or AI), transparent background — full-color, reversed on dark green, all-white, symbol-only; pattern SVG.
 - Q19. One base row (line 7205) cites an http:// source; https-only rule currently fails the whole build. Allow http for base-dataset sources (corrections stay https-only)?
 - Q21. Consultants can't give the ~17 h/passport for two-checker blind audits (REZ, 2026-10-22). Audit protocol §4 needs a revised verification model — options pending.
-- Q22. Connect HubSpot connector (not installed).
+- Q22. Which HubSpot properties hold passport country, destination, outcome, refusal reason? Export as a grouped report (counts only).
