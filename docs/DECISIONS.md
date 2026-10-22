@@ -55,6 +55,10 @@ Features: readiness-check widget (passport + destination → visa status, with v
 Content: migrate all existing country pages and blog posts.
 Out of Phase 1: login, traveller profile, consultant platform, payments, calendar, own visa-request form.
 
+## Step 2 — Architecture (in progress, 2026-10-22)
+- D25. No CMS for now: content (pages, blog, country data, visa corrections) changes via commits to the repo.
+- D26. Phase 1 site is statically generated.
+
 ## Open questions
 - Q1. Testing clarification (pure core = I/O tests; mocks only at edges) — confirmation pending.
 - Q2. Any customer records outside the site (form tool, CRM)? (Content migration resolved by D10.)
