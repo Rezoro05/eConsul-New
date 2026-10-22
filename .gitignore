@@ -1,0 +1,4 @@
+# Source brand book is too large for git (543 MB); keep it local
+eConsul Brand Guidelines.pdf
+docs/brand-preview/
+.DS_Store
