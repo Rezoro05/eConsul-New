@@ -67,9 +67,18 @@ Out of Phase 1: login, traveller profile, consultant platform, payments, calenda
 - D34. Step 3 component list approved (see ARCHITECTURE.md / step-3 discussion).
 - D32. Testing (resolves Q1): pure core gets input/output tests; delegate injection/mocks only at I/O edges and orchestrators.
 
+## Findings — current econsul.io (2026-10-22, via built-in browser)
+- F1. Built with Next.js; content almost certainly in Sanity CMS (Sanity document/image-ref/portable-text conventions; per-language documents linked via _translations).
+- F2. Sitemap: 298 URLs. Georgian at root, English under /en/, Russian under /ru/ — same URL scheme as D29.
+- F3. 28 destination pages per language (not 147). ~70–100 blog posts per language. Plus About, All destinations, Blog index, Privacy, Terms in each language.
+- F4. English and Russian versions of content already exist (e.g. /en/destination/kanadis-visa is English). Affects D11/D15/D33.
+- F5. Each page exposes localeAlternates (ka/en/ru paths) — usable for the redirect map and translation linking.
+
 ## Open questions
 - Q2. Any customer records outside the site (form tool, CRM)? (Content migration resolved by D10.)
 - Q3. Consultant-side scope (Phase 2).
 - Q5. Hosting: Cloudflare Pages vs. Netlify (D31).
-- Q15. Scrape econsul.io: blocked from both REZ's computer shell and container by network allowlist (403). Options: allowlist econsul.io, or read via built-in browser.
+- Q15. Migration source: Sanity export (needs project access) vs. harvesting page JSON via browser.
+- Q16. Keep Sanity as the content source for the new site vs. move content into repo files (D25).
+- Q17. With EN+RU content already existing: launch ka+en+ru? Does D33 (translate everything) still apply, and are existing translations trusted or reviewed?
 - Q13. Logo deliverables needed: SVG (or AI), transparent background — full-color, reversed on dark green, all-white, symbol-only; pattern SVG.
