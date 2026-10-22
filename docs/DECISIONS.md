@@ -58,10 +58,17 @@ Out of Phase 1: login, traveller profile, consultant platform, payments, calenda
 ## Step 2 — Architecture (in progress, 2026-10-22)
 - D25. No CMS for now: content (pages, blog, country data, visa corrections) changes via commits to the repo.
 - D26. Phase 1 site is statically generated.
+- D27. Visa corrections live in data/visa/corrections.csv, editable by consultants via GitHub web UI; validated on every build (bad row ⇒ build fails).
+- D28. Visa data pipeline at build time: pinned base dataset + corrections → validate → merge (correction wins, provenance kept) → one JSON per passport; widget fetches only the selected passport's file. No server.
+- D29. URLs: Georgian at root, English at /en/, Russian later at /ru/. Page text one file per page per language; UI strings one dictionary per language. Old econsul.io URLs 301-redirect to new ones.
+- D30. Stack: Astro + TypeScript, Vitest for tests. Next.js considered; revisit fit for Phase 2 app when we get there.
+- D31. Hosting: Cloudflare Pages or Netlify (auto-deploy from GitHub) — final pick pending; Phase 2 needs EU data residency.
+- D32. Testing (resolves Q1): pure core gets input/output tests; delegate injection/mocks only at I/O edges and orchestrators.
 
 ## Open questions
-- Q1. Testing clarification (pure core = I/O tests; mocks only at edges) — confirmation pending.
 - Q2. Any customer records outside the site (form tool, CRM)? (Content migration resolved by D10.)
 - Q3. Consultant-side scope (Phase 2).
-- Q5. [step 2] Hosting (where the site runs) — decided in step 2. Not GitHub Pages if server features are needed.
+- Q5. Hosting: Cloudflare Pages vs. Netlify (D31).
+- Q14. English versions of migrated Georgian content needed for D15 launch — who translates, and is partial English coverage acceptable?
+- Q15. Getting verbatim content out of current econsul.io (export vs. scrape).
 - Q13. Logo deliverables needed: SVG (or AI), transparent background — full-color, reversed on dark green, all-white, symbol-only; pattern SVG.
