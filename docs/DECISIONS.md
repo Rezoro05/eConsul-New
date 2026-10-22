@@ -76,10 +76,11 @@ Out of Phase 1: login, traveller profile, consultant platform, payments, calenda
 - F3. 28 destination pages per language (not 147). ~70–100 blog posts per language. Plus About, All destinations, Blog index, Privacy, Terms in each language.
 - F4. English and Russian versions of content already exist (e.g. /en/destination/kanadis-visa is English). Affects D11/D15/D33.
 - F5. Each page exposes localeAlternates (ka/en/ru paths) — usable for the redirect map and translation linking.
+- F6. Raw page data for all 298 URLs saved in migration/raw/pages (Next.js pageProps JSON, all valid). 280 unique Sanity image references.
 
 ## Open questions
 - Q2. Any customer records outside the site (form tool, CRM)? (Content migration resolved by D10.)
 - Q3. Consultant-side scope (Phase 2).
 - Q5. Hosting: Cloudflare Pages vs. Netlify (D31).
-- Q18. Images: page data references Sanity image IDs; image files must be downloaded separately (needs Sanity project ID).
+- Q18. Images: 280 unique images on Sanity CDN (project 6u9g44zq, dataset production); downloaded via migration/fetch-old-images.sh. Where image files live long-term (repo vs. image host) — decide in step 4.
 - Q13. Logo deliverables needed: SVG (or AI), transparent background — full-color, reversed on dark green, all-white, symbol-only; pattern SVG.
