@@ -84,6 +84,10 @@ Out of Phase 1: login, traveller profile, consultant platform, payments, calenda
 - D48. Step 5 splits (rule 6): CSV tokenizing via csv-parse behind readCsv; small field parsers; isStale separate from merge; validator = checkRow + findDuplicatePairs (validateVisaData is pure composition → functional test).
 - D49. Interface adjustments found while writing tests: parsed rows carry `origin {file,line}` for error reporting; BaseRow gets `verification | null`; added parseCountriesCsv for the known-country list; mergeRules takes `today` (needed for staleness); buildVisaData takes `baseSnapshot`.
 - D50. Step 7 done for the visa pipeline: 98 tests pass, type check clean; six deliberate bugs each caught by the suite.
+- D51. docs/VISA-ACCURACY.md approved: claim (§1), model changes (§2), acceptance criteria (§4), display rules (§6).
+- D52. Case history lives in HubSpot; aggregated counts only (no personal data) via the HubSpot connector once connected.
+- D53. Launch passports to audit: Georgian, Russian, Armenian, Azerbaijani, Ukrainian.
+- D54. Legal review by a human lawyer (person TBD).
 
 ## Findings — current econsul.io (2026-10-22, via built-in browser)
 - F1. Built with Next.js; content almost certainly in Sanity CMS (Sanity document/image-ref/portable-text conventions; per-language documents linked via _translations).
@@ -102,4 +106,5 @@ Out of Phase 1: login, traveller profile, consultant platform, payments, calenda
 - Q18. Images: 280 unique images on Sanity CDN (project 6u9g44zq, dataset production); downloaded via migration/fetch-old-images.sh.
 - Q13. Logo deliverables needed: SVG (or AI), transparent background — full-color, reversed on dark green, all-white, symbol-only; pattern SVG.
 - Q19. One base row (line 7205) cites an http:// source; https-only rule currently fails the whole build. Allow http for base-dataset sources (corrections stay https-only)?
-- Q20. Approve docs/VISA-ACCURACY.md: claim (§1), model changes (§2), audit acceptance criteria (§4), display rules (§6); answer inputs in §9 (case history, consultant time, launch passports, legal reviewer).
+- Q21. Consultants can't give the ~17 h/passport for two-checker blind audits (REZ, 2026-10-22). Audit protocol §4 needs a revised verification model — options pending.
+- Q22. Connect HubSpot connector (not installed).
