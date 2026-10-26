@@ -1,5 +1,5 @@
 import { readCsv } from './csv';
-import { parseCountryCode, parseHttpsUrl, parseIsoDate, parseMaxStay, parseRequirement } from './fields';
+import { parseCountryCode, parseHttpsUrl, parseIsoDate, parseMaxStay, parseRequirement, parseWebUrl } from './fields';
 import type { BaseRow, CountryCode, Correction, CsvRow, CsvTable, FieldResult, Result, RowError, Verification } from './types';
 
 const BASE_COLUMNS = ['passport', 'destination', 'requirement', 'max_stay_days', 'verified', 'source'];
@@ -47,7 +47,7 @@ const readBaseVerification = (row: CsvRow, errors: RowError[], file: string): Ve
   }
   const read = fieldReader(file, row, errors);
   const verifiedOn = read('verified', parseIsoDate);
-  const sourceUrl = read('source', parseHttpsUrl);
+  const sourceUrl = read('source', parseWebUrl);
   return verifiedOn && sourceUrl ? { verifiedOn, sourceUrl } : undefined;
 };
 

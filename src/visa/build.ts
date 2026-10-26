@@ -19,7 +19,8 @@ const summarise = (rules: VisaRule[], passports: number): BuildSummary => ({
   passports,
   rules: rules.length,
   verified: rules.filter((rule) => rule.provenance.kind === 'verified').length,
-  stale: rules.filter((rule) => rule.provenance.kind === 'verified' && rule.provenance.stale).length,
+  datasetCited: rules.filter((rule) => rule.provenance.kind === 'dataset_cited').length,
+  stale: rules.filter((rule) => rule.provenance.kind !== 'unverified' && rule.provenance.stale).length,
 });
 
 export const buildVisaData = async ({ readFile, writeFile, today, baseSnapshot, paths }: BuildVisaDataOptions): Promise<Result<BuildSummary>> => {

@@ -37,6 +37,7 @@ export type Correction = {
 
 export type Provenance =
   | { kind: 'unverified'; baseSnapshot: IsoDate }
+  | { kind: 'dataset_cited'; checkedOn: IsoDate; sourceUrl: string; stale: boolean }
   | { kind: 'verified'; verifiedOn: IsoDate; sourceUrl: string; stale: boolean };
 
 export type VisaRule = {
@@ -67,5 +68,6 @@ export type BuildSummary = {
   passports: number;
   rules: number;
   verified: number;
+  datasetCited: number;
   stale: number;
 };

@@ -89,6 +89,8 @@ Out of Phase 1: login, traveller profile, consultant platform, payments, calenda
 - D53. Launch passports to audit: Georgian, Russian, Armenian, Azerbaijani, Ukrainian.
 - D54. Legal review by a human lawyer (person TBD).
 - D55. No HubSpot connector. Case-history counts come from a manual HubSpot export containing only aggregate columns (no names, emails, phones, documents).
+- D56. Base-dataset source links may be http or https (parseWebUrl); eConsul corrections stay https-only (resolves Q19).
+- D57. New provenance state `dataset_cited` (checkedOn, sourceUrl, stale): a base row whose maintainer cited a source and date. Shown as "source: ‹link› · not yet checked by eConsul" and treated as unverified by the display rules. `verified` now means checked by eConsul only. Supersedes the "verified" part of D45. Real-data build: 38 dataset_cited, 0 verified.
 
 ## Findings — current econsul.io (2026-10-22, via built-in browser)
 - F1. Built with Next.js; content almost certainly in Sanity CMS (Sanity document/image-ref/portable-text conventions; per-language documents linked via _translations).
@@ -106,6 +108,5 @@ Out of Phase 1: login, traveller profile, consultant platform, payments, calenda
 - Q5. Hosting: Cloudflare Pages vs. Netlify (D31).
 - Q18. Images: 280 unique images on Sanity CDN (project 6u9g44zq, dataset production); downloaded via migration/fetch-old-images.sh.
 - Q13. Logo deliverables needed: SVG (or AI), transparent background — full-color, reversed on dark green, all-white, symbol-only; pattern SVG.
-- Q19. One base row (line 7205) cites an http:// source; https-only rule currently fails the whole build. Allow http for base-dataset sources (corrections stay https-only)?
 - Q21. Consultants can't give the ~17 h/passport for two-checker blind audits (REZ, 2026-10-22). Audit protocol §4 needs a revised verification model — options pending.
 - Q22. Which HubSpot properties hold passport country, destination, outcome, refusal reason? Export as a grouped report (counts only).

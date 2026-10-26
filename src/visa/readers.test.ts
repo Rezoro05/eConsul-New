@@ -32,6 +32,12 @@ describe('parseBaseCsv', () => {
     });
   });
 
+  it('accepts an http source link in the base dataset, which we do not control', () => {
+    const result = parseBaseCsv(`${BASE_HEADER}\nRU,BY,visa_free,,2026-07-15,http://en.kremlin.ru/acts/news/80315\n`);
+
+    expect(result.ok && result.value[0]?.verification?.sourceUrl).toBe('http://en.kremlin.ru/acts/news/80315');
+  });
+
   it('treats a row with a source but no check date as unverified', () => {
     const result = parseBaseCsv(`${BASE_HEADER}\nAD,CN,visa_free,30,,https://www.fmprc.gov.cn/eng/\n`);
 

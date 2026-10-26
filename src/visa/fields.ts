@@ -32,11 +32,15 @@ export const parseIsoDate = (raw: string): FieldResult<IsoDate> => {
   return isRealCalendarDate(year, month, day) ? ok(raw as IsoDate) : fail(`"${raw}" is not a real calendar date`);
 };
 
-export const parseHttpsUrl = (raw: string): FieldResult<string> => {
+const parseUrlWithProtocols = (raw: string, protocols: readonly string[], description: string): FieldResult<string> => {
   try {
     const url = new URL(raw);
-    return url.protocol === 'https:' && url.hostname !== '' ? ok(raw) : fail(`"${raw}" is not an https link`);
+    return protocols.includes(url.protocol) && url.hostname !== '' ? ok(raw) : fail(`"${raw}" is not ${description}`);
   } catch {
     return fail(`"${raw}" is not a valid link`);
   }
 };
+
+export const parseHttpsUrl = (raw: string): FieldResult<string> => parseUrlWithProtocols(raw, ['https:'], 'an https link');
+
+export const parseWebUrl = (raw: string): FieldResult<string> => parseUrlWithProtocols(raw, ['http:', 'https:'], 'a web link');

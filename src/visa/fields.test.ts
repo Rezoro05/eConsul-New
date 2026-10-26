@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { parseCountryCode, parseHttpsUrl, parseIsoDate, parseMaxStay, parseRequirement } from './fields';
+import { parseCountryCode, parseHttpsUrl, parseIsoDate, parseMaxStay, parseRequirement, parseWebUrl } from './fields';
 import { REQUIREMENTS } from './types';
 
 const failed = { ok: false, message: expect.any(String) };
@@ -60,5 +60,15 @@ describe('parseHttpsUrl', () => {
 
   it.each(['http://example.gov', 'ftp://example.gov', 'www.example.gov', 'https://', ''])('rejects %j', (raw) => {
     expect(parseHttpsUrl(raw)).toEqual(failed);
+  });
+});
+
+describe('parseWebUrl', () => {
+  it.each(['https://www.gdrfad.gov.ae/en/node/2086', 'http://en.kremlin.ru/acts/news/80315'])('accepts %s', (url) => {
+    expect(parseWebUrl(url)).toEqual({ ok: true, value: url });
+  });
+
+  it.each(['ftp://example.gov', 'www.example.gov', 'http://', ''])('rejects %j', (raw) => {
+    expect(parseWebUrl(raw)).toEqual(failed);
   });
 });

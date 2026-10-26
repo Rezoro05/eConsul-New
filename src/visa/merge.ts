@@ -8,7 +8,14 @@ const verifiedProvenance = ({ verifiedOn, sourceUrl }: Verification, today: IsoD
   stale: isStale(verifiedOn, today),
 });
 
-const pairKey = (row: { passport: string; destination: string }) => `${row.passport}→${row.destination}`;
+const datasetCitedProvenance = ({ verifiedOn, sourceUrl }: Verification, today: IsoDate): Provenance => ({
+  kind: 'dataset_cited',
+  checkedOn: verifiedOn,
+  sourceUrl,
+  stale: isStale(verifiedOn, today),
+});
+
+const pairKey =(row: { passport: string; destination: string }) => `${row.passport}→${row.destination}`;
 
 const toRule = (
   { passport, destination, requirement, maxStayDays }: BaseRow | Correction,
@@ -25,7 +32,7 @@ export const mergeRules = (
 
   for (const row of base) {
     const provenance: Provenance = row.verification
-      ? verifiedProvenance(row.verification, today)
+      ? datasetCitedProvenance(row.verification, today)
       : { kind: 'unverified', baseSnapshot };
     rulesByPair.set(pairKey(row), toRule(row, provenance));
   }

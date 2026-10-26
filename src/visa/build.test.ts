@@ -49,7 +49,7 @@ describe('buildVisaData', () => {
   it('builds one file per passport and summarises the result', async () => {
     const { result, written } = run({ [PATHS.base]: BASE, [PATHS.corrections]: CORRECTIONS, [PATHS.countries]: COUNTRIES });
 
-    expect(await result).toEqual({ ok: true, value: { passports: 2, rules: 3, verified: 2, stale: 1 } });
+    expect(await result).toEqual({ ok: true, value: { passports: 2, rules: 3, verified: 1, datasetCited: 1, stale: 1 } });
     expect([...written.keys()].sort()).toEqual(['public/visa/ge.json', 'public/visa/tr.json']);
     expect(JSON.parse(written.get('public/visa/ge.json') ?? '{}').rules.US.provenance).toEqual({
       kind: 'verified',

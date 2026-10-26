@@ -51,7 +51,8 @@ type Correction = BaseRow & { verifiedOn: IsoDate; sourceUrl: string; verifiedBy
 
 type Provenance =
   | { kind: 'unverified'; baseSnapshot: IsoDate }
-  | { kind: 'verified'; verifiedOn: IsoDate; sourceUrl: string; stale: boolean }   // stale: D40
+  | { kind: 'dataset_cited'; checkedOn: IsoDate; sourceUrl: string; stale: boolean } // D57
+  | { kind: 'verified'; verifiedOn: IsoDate; sourceUrl: string; stale: boolean }   // eConsul-checked; stale: D46
 
 type VisaRule  = { passport: CountryCode; destination: CountryCode; requirement: Requirement; maxStayDays: number | null; provenance: Provenance }
 type RowError  = { file: string; line: number; field?: string; message: string }

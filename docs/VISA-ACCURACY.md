@@ -94,7 +94,8 @@ Strictness order: visa-free < visa on arrival < ETA < e-visa < visa required < n
 
 | Situation | What the traveller sees |
 |---|---|
-| Verified, fresh | The answer + "checked ‹date› · source" |
+| Verified by eConsul, fresh | The answer + "checked ‹date› · source" |
+| Source cited by the dataset, not checked by eConsul (D57) | "Likely: ‹answer›" + "source: ‹link› · not yet checked by eConsul" + consultant button; treated as unverified for the disagreement rule |
 | Verified, stale (>183 days) | The answer + "checked ‹date› — may be outdated"; if the answer is visa-free or on arrival, consultant button made prominent |
 | Unverified, independent sources agree | "Likely: ‹answer›" + "not yet verified by eConsul" + consultant button |
 | Unverified, sources **disagree** | Show the **stricter** answer, labelled "sources disagree", + consultant button. Never present the more permissive one as the answer. |
@@ -124,7 +125,6 @@ The existing pipeline stays valid. Additions, each to go through steps 4–7: an
 3. **Launch passports to audit:** Georgian only first, or also Russian / Armenian / Azerbaijani / Ukrainian?
 4. **Approve** the claim (§1), the model changes (§2), the acceptance criteria (§4) and the display rules (§6) — or change them.
 5. **Legal reviewer:** who?
-6. **Q19:** allow http links for base-dataset sources?
 
 ## Sources
 - European Commission, IP/26/564 — suspension for Georgian diplomatic/service/official passports: https://ec.europa.eu/commission/presscorner/detail/en/ip_26_564

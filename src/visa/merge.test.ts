@@ -22,8 +22,25 @@ describe('mergeRules', () => {
     ]);
   });
 
-  it('keeps a base row that carries its own check as verified', () => {
+  it('marks a base row with its own check as cited by the dataset, not verified by eConsul', () => {
     const [rule] = mergeRules([aBaseRow({ verification: FRESH_CHECK })], [], BASE_SNAPSHOT, TODAY);
+
+    expect(rule?.provenance).toEqual({
+      kind: 'dataset_cited',
+      checkedOn: FRESH_CHECK.verifiedOn,
+      sourceUrl: FRESH_CHECK.sourceUrl,
+      stale: false,
+    });
+  });
+
+  it('flags a dataset citation older than 183 days as stale', () => {
+    const [rule] = mergeRules([aBaseRow({ verification: OLD_CHECK })], [], BASE_SNAPSHOT, TODAY);
+
+    expect(rule?.provenance).toMatchObject({ kind: 'dataset_cited', stale: true });
+  });
+
+  it('lets an eConsul correction replace a dataset citation', () => {
+    const [rule] = mergeRules([aBaseRow({ verification: OLD_CHECK })], [aCorrection({ verification: FRESH_CHECK })], BASE_SNAPSHOT, TODAY);
 
     expect(rule?.provenance).toEqual({ kind: 'verified', ...FRESH_CHECK, stale: false });
   });
